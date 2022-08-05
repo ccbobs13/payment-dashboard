@@ -1,32 +1,43 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view />
-  </div>
+  <v-app>
+    <HeaderComponent @handleDrawer="handleDrawer" />
+    <SidebarComponent :drawer="drawer" />
+    <v-main>
+      <v-container fluid>
+        <router-view></router-view>
+      </v-container>
+    </v-main>
+    <v-footer padless
+      ><v-col class="text-center">
+        {{ new Date().getFullYear() }} — <strong>CCB</strong>
+      </v-col></v-footer
+    >
+  </v-app>
 </template>
 
+<script>
+import SidebarComponent from "./components/SidebarComponent.vue";
+import HeaderComponent from "./components/HeaderComponent.vue";
+
+export default {
+  name: "App",
+  components: {
+    SidebarComponent,
+    HeaderComponent,
+  },
+  data: () => ({ drawer: true }),
+  methods: {
+    handleDrawer() {
+      this.drawer = !this.drawer;
+    },
+  },
+};
+</script>
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Inter, -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>
