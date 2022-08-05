@@ -9,7 +9,7 @@
     </v-main>
     <v-footer padless
       ><v-col class="text-center">
-        {{ new Date().getFullYear() }} — <strong>CCB</strong>
+        {{ new Date().getFullYear() }} — <strong>CCB•CIA</strong>
       </v-col></v-footer
     >
   </v-app>
